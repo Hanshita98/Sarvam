@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth">
+  <h2>Add Product</h2>
+  <input id="name" placeholder="Name">
+  <input id="price" placeholder="Price">
+  <input id="cat" placeholder="Category">
+  <button onclick="addProduct()">Add</button>
+</div>
+
+<script src="js/data.js"></script>
+<script>
+function addProduct() {
+  products.push({
+    id: products.length+1,
+    name: name.value,
+    price: price.value,
+    category: cat.value
+  });
+  alert("Product Added");
+}
+</script>
+
+</body>
+</html>
+

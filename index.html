@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sarvam Gruh Udhoyog</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- TOP STRIP -->
+<div class="top-strip">
+  Handmade • Pure Vegetarian • Traditional • Anjar, Kutch
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="Sarvam Logo" class="logo-img">
+    <div class="logo-text">
+      <h3>SARVAM</h3>
+      <p>Gruh Udhoyog</p>
+    </div>
+  </a>
+
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <nav class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="categories.html">Categories</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>
+      Pure. Traditional.<br>
+      Homemade.
+    </h1>
+
+    <p>
+      Bringing you authentic, preservative-free homemade snacks
+      crafted with love, hygiene, and tradition.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="primary-btn">Shop Now</button>
+      <button class="secondary-btn">Read Story</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img id="heroImage" src="images/hero/hero1.jpg" alt="Homemade Snacks">
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products">
+  <h2>Our Products</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="images/products/khakhra.jpg" alt="Khakhra">
+      <h3>Khakhra</h3>
+      <p class="price">₹250</p>
+      <button onclick="addToCart('Khakhra', 25o)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/products/thepla.jpg" alt="Thepla">
+      <h3>Thepla</h3>
+      <p class="price">₹50</p>
+      <button onclick="addToCart('Thepla', 50)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/products/namkeen.jpg" alt="Namkeen">
+      <h3>Namkeen</h3>
+      <p class="price">₹250</p>
+      <button onclick="addToCart('Namkeen', 250)">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- JS -->
+<script>
+  /* Mobile Menu */
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+  }
+
+  /* Hero Slider (6 Images) */
+  const heroImages = [
+    "images/hero/hero1.jpg",
+    "images/hero/hero2.jpg",
+    "images/hero/hero3.jpg",
+    "images/hero/hero4.jpg",
+    "images/hero/hero5.jpg",
+
+  ];
+
+  let currentIndex = 0;
+  const heroImg = document.getElementById("heroImage");
+
+  setInterval(() => {
+    heroImg.style.opacity = 0;
+
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % heroImages.length;
+      heroImg.src = heroImages[currentIndex];
+      heroImg.style.opacity = 1;
+    }, 500);
+
+  }, 3000); // change every 3 seconds
+</script>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart");
+}
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | Sarvam Gruh Udhoyog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+<!-- ABOUT SECTION -->
+<section class="about-page">
+  <h2>Our Story</h2>
+
+  <p><strong>Pure. Traditional. Homemade.</strong></p>
+
+  <p>
+    Sarvam Gruh Udhoyog was born from a simple belief — good food doesn’t need
+    preservatives, machines, or shortcuts.
+  </p>
+
+  <p>
+    Rooted in the rich culinary traditions of Kutch, Gujarat, Sarvam Gruh Udhoyog
+    is a homegrown initiative dedicated to delivering authentic homemade snacks
+    prepared with care, hygiene, and love.
+  </p>
+
+  <p>
+    Every product is handcrafted in small batches using traditional recipes,
+    ensuring quality, taste, and purity in every bite.
+  </p>
+
+  <p>
+    From our kitchen to your home, we bring flavors that feel familiar,
+    comforting, and truly Indian.
+  </p>
+</section>
+
+</body>
+</html>
